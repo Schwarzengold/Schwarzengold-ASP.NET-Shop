@@ -1,0 +1,808 @@
+
+
+body.index-page {
+    color: #ffffff;
+}
+
+.button1 {
+    background: rgb(95, 38, 38);
+    background: linear-gradient(180deg, rgb(105, 43, 43) 41%, rgb(182, 112, 112) 100%);
+    color: white;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-family: 'Cinzel Decorative', sans-serif;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+    .button1:hover {
+        color: white;
+        transform: scale(1.06);
+    }
+
+.button5 {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: rgb(44, 78, 141);
+    background: linear-gradient(180deg, rgb(31, 61, 116) 29%, rgb(80, 106, 146) 100%);
+    font-family: 'Cinzel Decorative', sans-serif;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+    .button5:hover {
+        color: white;
+        transform: scale(1.06);
+    }
+
+.createbtn {
+    font-family: "Cinzel Decorative", sans-serif;
+    font-size: 30px;
+    color: white;
+    text-shadow: 6px 7px 6px #002452, -6px -4px 4px #206fd4, 6px 7px 30px black;
+    font-weight: bold;
+    transition: transform 0.2s;
+    margin-bottom: -10px;
+    background-color: rgba(0, 0, 0, 0.219);
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+    .createbtn:hover {
+        color: rgb(112, 186, 255);
+        transform: scale(1.06);
+    }
+
+.card-fixed-image {
+    width: 438px; 
+    height: 230px; 
+    object-fit: cover;
+    object-position: center; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+body.index-page h5 {
+    font-family: 'Cinzel Decorative', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.219);
+    padding-top: 8px;
+    padding-bottom: 6px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.548);
+    text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.548);
+}
+
+body.index-page .group1 {
+    background-color: rgba(0, 0, 0, 0.219);
+    padding-bottom: 12px;
+    padding-top: 12px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.548);
+}
+
+
+
+body.index-page .navbar {
+    background: rgb(218,235,255);
+    background: linear-gradient( 0deg, rgba(218, 235, 255, 1) 0%, rgba(67, 135, 231, 1) 14%, rgba(67, 109, 231, 1) 29%, rgba(54, 99, 232, 1) 38%, rgba(45, 84, 199, 1) 41%, rgba(48, 91, 215, 1) 55%, rgba(67, 109, 231, 1) 67%, rgba(67, 135, 231, 1) 83%, rgba(218, 235, 255, 1) 100% );
+    height: 80px;
+    opacity: 0.6;
+    box-shadow: 0px 4px 6px rgba(218, 235, 255, 1), 0px 15px 20px #1f67c3, 0px 30px 30px #00285c;
+}
+
+body.index-page .hom {
+    font-size: 33px;
+    font-family: 'Cinzel Decorative', sans-serif;
+    font-weight: bold;
+    position: absolute;
+    top: 9px;
+    left: 100px;
+    color: #ade6ff;
+    text-shadow: 3px 3px black;
+    transition: transform 0.2s;
+}
+
+    body.index-page .hom:hover {
+        transform: scale(1.03);
+        color: #eef9fe;
+    }
+
+body.index-page .container {
+    max-width: 1200px;
+    box-shadow: 3px 5px rgba(0, 0, 0.7, 0.7);
+    background: rgb(255,255,255, 0.05);
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%), linear-gradient(0deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%);
+    background-blend-mode: screen;
+    padding: 50px 150px 20px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 12px rgba(218, 235, 255, 1), 30px 30px 80px #00285c, -4px -4px 12px rgba(218, 235, 255, 1), -30px -30px 80px #00285c;
+    margin-bottom: 30px;
+}
+
+body.index-page .hdr h1 {
+    position: relative;
+    margin-top: 20px;
+    font-family: "Cinzel Decorative", sans-serif;
+    font-size: 70px;
+    color: white;
+    text-shadow: 6px 7px 6px #002452, -6px -4px 4px #206fd4, 6px 7px 30px black;
+    font-weight: bold;
+}
+
+body.index-page .game-card {
+    border: none;
+    box-shadow: 3px 5px 8px rgba(0, 0, 0.7, 0.7);
+    transition: transform 0.2s;
+}
+
+    body.index-page .game-card:hover {
+        transform: scale(1.03);
+    }
+
+body.index-page .hero-image {
+    position: relative;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+}
+
+body.index-page .hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px #000;
+}
+
+    body.index-page .hero-text h1 {
+        font-size: 4rem;
+    }
+
+    body.index-page .hero-text p {
+        font-size: 1.5rem;
+    }
+
+    body.index-page .hero-text h1,
+    body.index-page .hero-text p,
+    body.index-page h2,
+    body.index-page p {
+        text-shadow: 1px 1px 2px #000;
+    }
+
+body.index-background {
+    background-image: url('../images/index-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+body.fallout-page {
+    color: #ffffff;
+}
+
+    body.fallout-page .navbar {
+        background: rgb(71,62,30);
+        background: linear-gradient(0deg, rgba(71,62,30,1) 0%, rgba(96,85,50,1) 14%, rgba(159,123,0,1) 22%, rgba(88,76,38,1) 30%, rgba(85,72,29,0.9976365546218487) 35%, rgba(92,79,36,1) 43%, rgba(96,85,50,1) 49%, rgba(159,123,0,1) 57%, rgba(96,85,50,1) 65%, rgba(43,34,3,1) 90%, rgba(51,51,51,1) 100%);
+        height: 80px;
+        opacity: 0.8;
+        box-shadow: 0px 4px 6px rgb(159, 123, 0, 0.35), 0px 15px 20px #1f1f1f, 0px 30px 30px #000;
+    }
+
+    body.fallout-page .hom {
+        font-size: 33px;
+        font-family: 'Cinzel Decorative', sans-serif;
+        font-weight: 500;
+        position: absolute;
+        top: 9px;
+        left: 100px;
+        color: #f0e68c;
+        text-shadow: 3px 3px black;
+        transition: transform 0.2s;
+    }
+
+        body.fallout-page .hom:hover {
+            transform: scale(1.03);
+            color: #fffacd;
+        }
+
+    body.fallout-page .container {
+        max-width: 1000px;
+        font-size: 20px;
+        box-shadow: 3px 5px rgba(0, 0, 0.7, 0.7);
+        background: rgb(255,255,255, 0.05);
+        background-image: linear-gradient(90deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%), linear-gradient(0deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%);
+        background-blend-mode: screen;
+        padding: 40px 60px 20px;
+        border-radius: 15px;
+        box-shadow: 4px 4px 12px rgb(255, 246, 218), 30px 30px 80px #5c5300, -4px -4px 12px rgb(255, 243, 218), -30px -30px 80px #5c5300;
+        margin-bottom: 30px;
+    }
+
+        body.fallout-page .container p {
+            color: #f0e68c;
+            text-shadow: 1px 2px 2px #000;
+        }
+
+    body.fallout-page .hdr h1 {
+        position: relative;
+        margin-top: 20px;
+        font-family: "Cinzel Decorative", sans-serif;
+        font-size: 70px;
+        color: #f0e68c;
+        text-shadow: 4px 4px 6px #000;
+    }
+
+    body.fallout-page .hero-image {
+        box-shadow: 0px 9px 15px black;
+        margin-top: 40px;
+        background-image: url('../images/fallout-banner.jpg');
+        position: relative;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    body.fallout-page .hero-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #f0e68c;
+        text-shadow: 2px 2px 4px #000;
+    }
+
+        body.fallout-page .hero-text h1 {
+            font-size: 4.5rem;
+            font-family: 'Cinzel Decorative', sans-serif;
+            text-shadow: 1px 2px 2px #000;
+        }
+
+        body.fallout-page .hero-text p {
+            font-size: 2rem;
+            font-weight: 500;
+            font-style: italic;
+            font-family: 'Cinzel Decorative', sans-serif;
+            text-shadow: 1px 2px 2px #000;
+        }
+
+body.fallout-background {
+    background-image: url('../images/fallout-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+body.horizon-page {
+    color: #ffffff;
+}
+
+    body.horizon-page .navbar {
+        background: rgb(55, 30, 71);
+        background: linear-gradient(0deg, rgba(55, 30, 71,1) 0%, rgb(81, 50, 96) 14%, rgb(109, 0, 159) 22%, rgb(76, 38, 88) 30%, rgba(67, 29, 85, 0.998) 35%, rgba(81, 50, 96,1) 43%, rgb(79, 50, 96) 49%, rgba(109, 0, 159) 57%, rgb(78, 50, 96) 65%, rgb(27, 3, 43) 90%, rgba(51,51,51,1) 100%);
+        height: 80px;
+        opacity: 0.8;
+        box-shadow: 0px 4px 6px rgba(95, 0, 159, 0.35), 0px 15px 20px #1f1f1f, 0px 30px 30px #000;
+    }
+
+    body.horizon-page .hom {
+        font-size: 33px;
+        font-family: 'Cinzel Decorative', sans-serif;
+        font-weight: 500;
+        position: absolute;
+        top: 9px;
+        left: 100px;
+        color: rgb(210, 162, 255);
+        text-shadow: 3px 3px black;
+        transition: transform 0.2s;
+    }
+
+        body.horizon-page .hom:hover {
+            transform: scale(1.03);
+            color: rgb(194, 128, 255);
+        }
+
+    body.horizon-page .container {
+        max-width: 1000px;
+        font-size: 20px;
+        box-shadow: 3px 5px rgba(0, 0, 0.7, 0.7);
+        background: rgb(255,255,255, 0.05);
+        background-image: linear-gradient(90deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%), linear-gradient(0deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%);
+        background-blend-mode: screen;
+        padding: 40px 60px 20px;
+        border-radius: 15px;
+        box-shadow: 4px 4px 12px rgb(240, 218, 255), 30px 30px 80px #37005c, -4px -4px 12px rgb(240, 218, 255), -30px -30px 80px #37005c;
+        margin-bottom: 30px;
+    }
+
+        body.horizon-page .container p {
+            color: rgb(210, 162, 255);
+            text-shadow: 2px 4px 3px #000;
+        }
+
+    body.horizon-page .hdr h1 {
+        position: relative;
+        margin-top: 20px;
+        font-family: "Cinzel Decorative", sans-serif;
+        font-size: 70px;
+        color: rgb(210, 162, 255);
+        text-shadow: 4px 4px 6px #000;
+    }
+
+    body.horizon-page .hero-image {
+        box-shadow: 0px 9px 15px black;
+        margin-top: 40px;
+        background-image: url('../images/horizon-banner.jpg');
+        position: relative;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    body.horizon-page .hero-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: rgb(194, 128, 255);
+        text-shadow: 2px 3px 3px #000;
+    }
+
+        body.horizon-page .hero-text h1 {
+            font-size: 4.5rem;
+            font-family: 'Cinzel Decorative', sans-serif;
+            text-shadow: 2px 3px 3px #000;
+        }
+
+        body.horizon-page .hero-text p {
+            font-size: 2rem;
+            font-weight: 500;
+            font-style: italic;
+            font-family: 'Cinzel Decorative', sans-serif;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+
+body.horizon-background {
+    background-image: url('../images/horizon-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+body.deadspace-page {
+    color: #ffffff;
+}
+
+    body.deadspace-page .navbar {
+        background: rgb(71, 30, 30);
+        background: linear-gradient(0deg, rgb(71, 30, 30) 0%, rgb(96, 50, 50) 14%, rgb(159, 0, 0) 22%, rgb(88, 38, 38) 30%, rgba(85, 29, 29, 0.998) 35%, rgb(96, 50, 50) 43%, rgb(96, 50, 50) 49%, rgb(159, 0, 0) 57%, rgb(96, 50, 50) 65%, rgb(43, 3, 3) 90%, rgba(51,51,51,1) 100%);
+        height: 80px;
+        opacity: 0.8;
+        box-shadow: 0px 4px 6px rgba(159, 0, 0, 0.35), 0px 15px 20px #1f1f1f, 0px 30px 30px #000;
+    }
+
+    body.deadspace-page .hom {
+        font-size: 33px;
+        font-family: 'Cinzel Decorative', sans-serif;
+        font-weight: 500;
+        position: absolute;
+        top: 9px;
+        left: 100px;
+        color: rgb(212, 72, 72);
+        text-shadow: 3px 3px black;
+        transition: transform 0.2s;
+    }
+
+        body.deadspace-page .hom:hover {
+            transform: scale(1.03);
+            color: rgb(255, 112, 112);
+        }
+
+    body.deadspace-page .container {
+        max-width: 1000px;
+        font-size: 20px;
+        box-shadow: 3px 5px rgba(1, 0, 0, 0.7);
+        background: rgba(255, 255, 255, 0.05);
+        background-image: linear-gradient(90deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%), linear-gradient(0deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%);
+        background-blend-mode: screen;
+        padding: 40px 60px 20px;
+        border-radius: 15px;
+        box-shadow: 4px 4px 12px rgb(255, 218, 218), 30px 30px 80px #5c0000, -4px -4px 12px rgb(255, 218, 218), -30px -30px 80px #5c0000;
+        margin-bottom: 30px;
+    }
+
+        body.deadspace-page .container p {
+            color: rgb(255, 112, 112);
+        }
+
+body.deadspace-p age .hdr h1 {
+    position: relative;
+    margin-top: 20px;
+    font-family: "Cinzel Decorative", sans-serif;
+    font-size: 70px;
+    color: rgb(255, 112, 112);
+    text-shadow: 4px 4px 6px #000;
+}
+
+body.deadspace-page .hero-image {
+    box-shadow: 0px 9px 15px black;
+    margin-top: 40px;
+    background-image: url('../images/deadspace-banner.jpg');
+    position: relative;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+}
+
+body.deadspace-page .hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: rgb(212, 72, 72);
+    text-shadow: 2px 2px 4px #000;
+}
+
+    body.deadspace-page .hero-text h1 {
+        font-size: 4.5rem;
+        font-family: 'Cinzel Decorative', sans-serif;
+    }
+
+    body.deadspace-page .hero-text p {
+        font-size: 2rem;
+        font-weight: 500;
+        font-style: italic;
+        font-family: 'Cinzel Decorative', sans-serif;
+    }
+
+    body.deadspace-page .hero-text h1,
+    body.deadspace-page .hero-text p,
+    body.deadspace-page h2,
+    body.deadspace-page p {
+        text-shadow: 1px 2px 2px #000;
+    }
+
+body.deadspace-background {
+    background-image: url('../images/deadspace-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+body.lastofus-page {
+    color: #ffffff;
+}
+
+    body.lastofus-page .navbar {
+        background: rgb(71, 43, 30);
+        background: linear-gradient(0deg, rgb(71, 46, 30) 0%, rgb(96, 63, 50) 14%, rgb(255, 169, 112) 22%, rgb(88, 58, 38) 30%, rgba(85, 54, 29, 0.998) 35%, rgb(96, 68, 50) 43%, rgb(96, 67, 50) 49%, rgb(159, 72, 0) 57%, rgb(96, 71, 50) 65%, rgb(43, 21, 3) 90%, rgba(51,51,51,1) 100%);
+        height: 80px;
+        opacity: 0.8;
+        box-shadow: 0px 4px 6px rgba(159, 50, 0, 0.35), 0px 15px 20px #1f1f1f, 0px 30px 30px #000;
+    }
+
+    body.lastofus-page .hom {
+        font-size: 33px;
+        font-family: 'Cinzel Decorative', sans-serif;
+        font-weight: 500;
+        position: absolute;
+        top: 9px;
+        left: 100px;
+        color: #ca802c;
+        text-shadow: 3px 3px black;
+        transition: transform 0.2s;
+    }
+
+        body.lastofus-page .hom:hover {
+            transform: scale(1.03);
+            color: #faad55;
+        }
+
+    body.lastofus-page .container {
+        max-width: 1000px;
+        font-size: 20px;
+        box-shadow: 3px 5px rgba(1, 0, 0, 0.7);
+        background: rgba(255, 255, 255, 0.05);
+        background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%), linear-gradient(0deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%);
+        background-blend-mode: screen;
+        padding: 40px 60px 20px;
+        border-radius: 15px;
+        box-shadow: 4px 4px 12px rgb(255, 233, 218), 30px 30px 80px #5c3100, -4px -4px 12px rgb(255, 236, 218), -30px -30px 80px #5c3100;
+        margin-bottom: 30px;
+    }
+
+        body.lastofus-page .container p {
+            color: #faad55;
+            text-shadow: 2px 4px 3px #000;
+        }
+
+    body.lastofus-page .hdr h1 {
+        position: relative;
+        margin-top: 20px;
+        font-family: "Cinzel Decorative", sans-serif;
+        font-size: 70px;
+        color: rgb(210, 162, 255);
+        text-shadow: 4px 4px 6px #000;
+    }
+
+    body.lastofus-page .hero-image {
+        box-shadow: 0px 9px 15px black;
+        margin-top: 40px;
+        background-image: url('../images/lastofus-banner.jpg');
+        position: relative;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    body.lastofus-page .hero-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #faad55;
+        text-shadow: 2px 3px 3px #000;
+    }
+
+        body.lastofus-page .hero-text h1 {
+            font-size: 4.5rem;
+            font-family: 'Cinzel Decorative', sans-serif;
+            text-shadow: 2px 3px 3px #000;
+        }
+
+        body.lastofus-page .hero-text p {
+            font-size: 2rem;
+            font-weight: 500;
+            font-style: italic;
+            font-family: 'Cinzel Decorative', sans-serif;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+body.lastofus-background {
+    background-image: url('../images/lastofus-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+body.skyrim-page {
+    color: #ffffff;
+}
+
+    body.skyrim-page .navbar {
+        background: rgb(30, 41, 71);
+        background: linear-gradient(0deg, rgb(30, 43, 71) 0%, rgb(50, 62, 96) 14%, rgb(0, 56, 159) 22%, rgb(38, 55, 88) 30%, rgba(29, 51, 85, 0.998) 35%, rgb(50, 66, 96) 43%, rgb(50, 66, 96) 49%, rgb(0, 50, 159) 57%, rgb(50, 61, 96) 65%, rgb(3, 14, 43) 90%, rgb(51, 51, 51) 100%);
+        height: 80px;
+        opacity: 0.8;
+        box-shadow: 0px 4px 6px rgba(0, 64, 159, 0.35), 0px 15px 20px #1f1f1f, 0px 30px 30px #000;
+    }
+
+    body.skyrim-page .hom {
+        font-size: 33px;
+        font-family: 'Cinzel Decorative', sans-serif;
+        font-weight: 500;
+        position: absolute;
+        top: 9px;
+        left: 100px;
+        color: #70b3ff;
+        text-shadow: 3px 3px black;
+        transition: transform 0.2s;
+    }
+
+        body.skyrim-page .hom:hover {
+            transform: scale(1.03);
+            color: #3c8ae2;
+        }
+
+    body.skyrim-page .container {
+        max-width: 1000px;
+        font-size: 20px;
+        box-shadow: 3px 5px rgba(0, 0, 0.7, 0.7);
+        background: rgb(255,255,255, 0.05);
+        background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.74) 0%, rgba(0, 0, 0, 0.437) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%), linear-gradient(0deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%);
+        background-blend-mode: screen;
+        padding: 40px 60px 20px;
+        border-radius: 15px;
+        box-shadow: 4px 4px 12px rgb(218, 231, 255), 30px 30px 80px #00195c, -4px -4px 12px rgb(218, 231, 255), -30px -30px 80px #002b5c;
+        margin-bottom: 30px;
+    }
+
+        body.skyrim-page .container p {
+            color: #70b3ff;
+            text-shadow: 2px 4px 3px #000;
+        }
+
+    body.skyrim-page .hdr h1 {
+        position: relative;
+        margin-top: 20px;
+        font-family: "Cinzel Decorative", sans-serif;
+        font-size: 70px;
+        color: #70b3ff;
+        text-shadow: 4px 4px 6px #000;
+    }
+
+    body.skyrim-page .hero-image {
+        box-shadow: 0px 9px 15px black;
+        margin-top: 40px;
+        background-image: url('../images/skyrim-banner.jpg');
+        position: relative;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    body.skyrim-page .hero-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #70b3ff;
+        text-shadow: 2px 3px 3px #000;
+    }
+
+        body.skyrim-page .hero-text h1 {
+            font-size: 4.5rem;
+            font-family: 'Cinzel Decorative', sans-serif;
+            text-shadow: 2px 3px 3px #000;
+        }
+
+        body.skyrim-page .hero-text p {
+            font-size: 2rem;
+            font-weight: 500;
+            font-style: italic;
+            font-family: 'Cinzel Decorative', sans-serif;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+
+body.skyrim-background {
+    background-image: url('../images/skyrim-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.character-card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.character-card .card-body {
+    text-align: center;
+}
+
+.carousel-inner img {
+    height: 500px;
+    object-fit: cover;
+}
+
+section h2 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    border-radius: 50px;
+}
+
+.btn-lg {
+    padding: 15px 30px;
+    font-size: 1.25rem;
+}
+
+body.skyrim-background {
+    background-image: url('../images/skyrim-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+body.game-page {
+    color: #ffffff;
+}
+
+
+    body.game-page .navbar {
+        background: rgb(30, 41, 71);
+        background: linear-gradient(0deg, rgb(30, 43, 71) 0%, rgb(50, 62, 96) 14%, rgb(0, 56, 159) 22%, rgb(38, 55, 88) 30%, rgba(29, 51, 85, 0.998) 35%, rgb(50, 66, 96) 43%, rgb(50, 66, 96) 49%, rgb(0, 50, 159) 57%, rgb(50, 61, 96) 65%, rgb(3, 14, 43) 90%, rgb(51, 51, 51) 100%);
+        height: 80px;
+        opacity: 0.8;
+        box-shadow: 0px 4px 6px rgba(0, 64, 159, 0.35), 0px 15px 20px #1f1f1f, 0px 30px 30px #000;
+    }
+
+
+    body.game-page .hom {
+        font-size: 33px;
+        font-family: 'Cinzel Decorative', sans-serif;
+        font-weight: 500;
+        position: absolute;
+        top: 9px;
+        left: 100px;
+        color: #70b3ff;
+        text-shadow: 3px 3px black;
+        transition: transform 0.2s;
+    }
+
+        body.game-page .hom:hover {
+            transform: scale(1.03);
+            color: #3c8ae2;
+        }
+
+
+    body.game-page .container {
+        max-width: 1000px;
+        font-size: 20px;
+        box-shadow: 3px 5px rgba(0, 0, 0.7, 0.7);
+        background: rgb(255,255,255, 0.05);
+        background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.74) 0%, rgba(0, 0, 0, 0.437) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%), linear-gradient(0deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.437) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%);
+        background-blend-mode: screen;
+        padding: 40px 60px 20px;
+        border-radius: 15px;
+        box-shadow: 4px 4px 12px rgb(218, 231, 255), 30px 30px 80px #00195c, -4px -4px 12px rgb(218, 231, 255), -30px -30px 80px #002b5c;
+        margin-bottom: 30px;
+    }
+
+        body.game-page .container p {
+            color: #70b3ff;
+            text-shadow: 2px 4px 3px #000;
+        }
+
+    body.game-page .hero-image {
+        box-shadow: 0px 9px 15px black;
+        margin-top: 40px;
+        background-image: url('../images/default-banner.jpg');
+        position: relative;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    body.game-page .hero-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #70b3ff;
+        text-shadow: 2px 3px 3px #000;
+    }
+
+        body.game-page .hero-text h1 {
+            font-size: 4.5rem;
+            font-family: 'Cinzel Decorative', sans-serif;
+            text-shadow: 2px 3px 3px #000;
+        }
+
+        body.game-page .hero-text p {
+            font-size: 2rem;
+            font-weight: 500;
+            font-style: italic;
+            font-family: 'Cinzel Decorative', sans-serif;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+
+body.game-background {
+    background-image: url('../images/default-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}

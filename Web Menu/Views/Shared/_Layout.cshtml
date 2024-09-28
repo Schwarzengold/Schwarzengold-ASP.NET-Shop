@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Game Introduction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/custom.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap">
+    @RenderSection("Styles", false)
+</head>
+<body class="@ViewData["BodyClass"]" style="@(ViewData["BackgroundStyle"])">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+
+    </nav>
+    <a class="navbar-brand hom" href="@Url.Action("Index", "Home")">Game Portal</a>
+    @RenderBody()
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>

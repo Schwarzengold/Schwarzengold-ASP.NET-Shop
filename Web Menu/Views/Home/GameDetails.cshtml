@@ -1,0 +1,87 @@
+﻿@model Web_Menu.Models.Game
+
+@{
+    ViewData["Title"] = Model.Title;    
+    ViewData["BodyClass"] = $"{Model.StyleGroup}";
+    ViewData["BackgroundStyle"] = $"background-image: url('{Model.BackgroundImageUrl}'); background-size: cover; background-attachment: fixed; background-repeat: no-repeat; background-position: center;";
+}
+
+<link rel="stylesheet" href="~/css/custom.css" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<div class="hero-image" style="background-image: url('@Model.BannerImageUrl');">
+    <div class="hero-text">
+        <h1>@Model.Title</h1>
+        <p>@Model.Quote</p>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <section id="overview">
+        <h2>Official @Model.Title Trailer</h2>
+        <div class="ratio ratio-16x9 mb-4">
+            <iframe width="560" height="315" src="@Model.TrailerUrl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="overview">
+        <h2>Overview</h2>
+        <p>
+            @Html.Raw(Model.Overview)
+        </p>
+    </section>
+
+    <section id="gameplay" class="mt-5">
+        <h2>Gameplay</h2>
+        <p>
+            @Html.Raw(Model.Gameplay)
+        </p>
+    </section>
+
+    <section id="characters" class="mt-5">
+        <h2>Main Characters</h2>
+        <div class="row">
+            @foreach (var character in Model.Characters)
+            {
+                <div class="col-md-4">
+                    <div class="card character-card bg-dark">
+                        <img src="@character.PhotoUrl" class="card-img-top" alt="@character.Name">
+                        <div class="card-body">
+                            <h4 class="card-title">@character.Name</h4>
+                            <p class="card-text">@character.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section id="gallery" class="mt-5 mb-4">
+        <h2>Gallery</h2>
+        <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @{
+                    var first = true;
+                    foreach (var imageUrl in Model.GalleryImages)
+                    {
+                        if (!string.IsNullOrEmpty(imageUrl))
+                        {
+                            <div class="carousel-item @(first ? "active" : "")">
+                                <img src="@imageUrl" class="d-block w-100" alt="@Model.Title Image">
+                            </div>
+                            first = false;
+                        }
+                    }
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+</div>

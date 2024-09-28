@@ -1,0 +1,19 @@
+﻿@model Web_Menu.Models.ErrorViewModel
+
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+@if (Model?.RequestId != null)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<p>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Back to Home</a>
+</p>

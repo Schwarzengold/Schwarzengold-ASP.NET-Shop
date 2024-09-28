@@ -1,0 +1,163 @@
+﻿@model Web_Menu.Models.GameViewModel
+
+@{
+    ViewData["Title"] = "Add New Game";
+    ViewData["BodyClass"] = "index-page index-background";
+}
+
+<link rel="stylesheet" href="~/css/addpage.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap">
+
+<div class="hdr">
+    <h1 class="text-center mb-5">New Game</h1>
+</div>
+
+<div class="container mt-5">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <section>
+            <h2>General Information</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" class="form-control" placeholder="Enter game title" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Quote"></label>
+                        <input asp-for="Quote" class="form-control" placeholder="Enter game quote" />
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="TrailerUrl"></label>
+                        <input asp-for="TrailerUrl" class="form-control" placeholder="Enter trailer URL" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Overview"></label>
+                <textarea asp-for="Overview" class="form-control" rows="4" placeholder="Enter game overview"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Gameplay"></label>
+                <textarea asp-for="Gameplay" class="form-control" rows="4" placeholder="Enter gameplay details"></textarea>
+            </div>
+        </section>
+
+        <section>
+            <h2>Characters</h2>
+            <div class="form-group">
+                <label asp-for="NumberOfCharacters">Number of Main Characters (1-3)</label>
+                <input asp-for="NumberOfCharacters" id="NumberOfCharacters" class="form-control" min="1" max="3" />
+            </div>
+            <div class="form-group">
+                <div id="characterFields">
+                
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Images and Style</h2>
+            <div class="form-group d-flex justify-content-between">
+                <div>
+                    <div class="form-group">
+                        <label asp-for="CardImage">Card Image</label>
+                        <input asp-for="CardImage" class="form-control mt-2" type="file" accept="image/*" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="BackgroundImage">Background Image</label>
+                        <input asp-for="BackgroundImage" class="form-control mt-2" type="file" accept="image/*" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="BannerImage">Banner Image</label>
+                        <input asp-for="BannerImage" class="form-control mt-2" type="file" accept="image/*" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="mb-3">Gallery Images (Up to 5 images)</label>
+                    <div class="row1">
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            <input name="GalleryImages" class="form-control mb-2 mt-2" type="file" accept="image/*" />
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="StyleGroup">Select Style Color</label>
+                <select asp-for="StyleGroup" class="form-control custom-select" asp-items="ViewBag.StyleGroups">
+                    
+                </select>
+            </div>
+
+        </section>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn createbtn">Add Game</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function createCharacterFields(number) {
+            var container = document.getElementById('characterFields');
+            container.innerHTML = '';
+            for (var i = 0; i < number; i++) {
+                var index = i;
+                var div = document.createElement('div');
+                div.className = 'mb-3';
+                div.innerHTML = `
+                            <h4>Character ${i + 1}</h4>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input name="Characters[${index}].Name" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Photo</label>
+                                        <input name="Characters[${index}].Photo" class="form-control" type="file" accept="image/*" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="Characters[${index}].Description" class="form-control"></textarea>
+                            </div>
+                        `;
+                container.appendChild(div);
+            }
+        }
+
+        document.getElementById('NumberOfCharacters').addEventListener('input', function () {
+            var number = parseInt(this.value);
+            if (number >= 1 && number <= 3) {
+                createCharacterFields(number);
+            } else {
+                document.getElementById('characterFields').innerHTML = '';
+            }
+        });
+
+                window.onload = function() {
+                    var numberInput = document.getElementById('NumberOfCharacters');
+                    var number = parseInt(numberInput.value);
+                    createCharacterFields(number);
+                };
+    </script>
+}
