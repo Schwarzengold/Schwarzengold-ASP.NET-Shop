@@ -6,7 +6,7 @@ namespace Web_Menu.Models
 {
     public class GameViewModel
     {
-        public int Id { get; set; } // Added for editing
+        public int Id { get; set; } 
 
         [Required]
         public string Title { get; set; }
