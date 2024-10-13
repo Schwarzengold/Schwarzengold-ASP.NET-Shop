@@ -17,6 +17,13 @@ body.index-page {
     transition: transform 0.2s;
 }
 
+.price-text {
+    font-family: 'Cinzel Decorative', sans-serif;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
     .button1:hover {
         color: white;
         transform: scale(1.06);

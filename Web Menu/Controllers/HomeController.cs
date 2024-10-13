@@ -59,10 +59,10 @@ namespace Web_Menu.Controllers
                     Overview = model.Overview,
                     Gameplay = model.Gameplay,
                     StyleGroup = model.StyleGroup,
+                    Price = model.Price,
                     GalleryImages = new List<string>(),
                     Characters = new List<Character>()
                 };
-
 
                 if (model.BackgroundImage != null)
                 {
@@ -70,20 +70,17 @@ namespace Web_Menu.Controllers
                     game.BackgroundImageUrl = backgroundImagePath;
                 }
 
-
                 if (model.BannerImage != null)
                 {
                     string bannerImagePath = await SaveImage(model.BannerImage);
                     game.BannerImageUrl = bannerImagePath;
                 }
 
-
                 if (model.CardImage != null)
                 {
                     string cardImagePath = await SaveImage(model.CardImage);
                     game.CardImageUrl = cardImagePath;
                 }
-
 
                 if (model.GalleryImages != null && model.GalleryImages.Any())
                 {
@@ -96,7 +93,6 @@ namespace Web_Menu.Controllers
                         }
                     }
                 }
-
 
                 if (model.Characters != null && model.Characters.Any())
                 {
@@ -122,9 +118,11 @@ namespace Web_Menu.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
             ViewBag.StyleGroups = GetStyleGroupsSelectList();
             return View(model);
         }
+
 
         private SelectList GetStyleGroupsSelectList()
         {
@@ -141,7 +139,6 @@ namespace Web_Menu.Controllers
 
         private async Task<string> SaveImage(IFormFile imageFile)
         {
-
             var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
             var allowedContentTypes = new[] { "image/jpeg", "image/png", "image/gif" };
 
@@ -158,28 +155,151 @@ namespace Web_Menu.Controllers
                 return null;
             }
 
-
             if (imageFile.Length > (5 * 1024 * 1024))
             {
                 ModelState.AddModelError("", "File size exceeds 5 MB.");
                 return null;
             }
 
-
             string fileName = Path.GetFileNameWithoutExtension(imageFile.FileName);
             fileName = fileName + "_" + Guid.NewGuid().ToString() + extension;
-
 
             string wwwRootPath = _hostEnvironment.WebRootPath;
             string path = Path.Combine(wwwRootPath, "images", fileName);
 
-            using (var fileStream = new FileStream(path, FileMode.Create))
+
+            if (!System.IO.File.Exists(path))
             {
-                await imageFile.CopyToAsync(fileStream);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(fileStream);
+                }
             }
 
-
             return "/images/" + fileName;
+        }
+
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var game = _context.Games.Include(g => g.Characters).FirstOrDefault(g => g.Id == id);
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            var model = new GameViewModel
+            {
+                Id = game.Id,
+                Title = game.Title,
+                Quote = game.Quote,
+                TrailerUrl = game.TrailerUrl,
+                Overview = game.Overview,
+                Gameplay = game.Gameplay,
+                StyleGroup = game.StyleGroup,
+                Price = game.Price,
+                NumberOfCharacters = game.Characters.Count,
+                Characters = game.Characters.Select(c => new CharacterViewModel
+                {
+                    Name = c.Name,
+                    Description = c.Description
+                }).ToList()
+            };
+
+            ViewBag.StyleGroups = GetStyleGroupsSelectList();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, GameViewModel model)
+        {
+            if (id != model.Id)
+            {
+                return BadRequest();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var game = _context.Games.Include(g => g.Characters).FirstOrDefault(g => g.Id == id);
+                if (game == null)
+                {
+                    return NotFound();
+                }
+
+                game.Title = model.Title;
+                game.Quote = model.Quote;
+                game.TrailerUrl = model.TrailerUrl;
+                game.Overview = model.Overview;
+                game.Gameplay = model.Gameplay;
+                game.StyleGroup = model.StyleGroup;
+                game.Price = model.Price;
+
+                if (model.BackgroundImage != null)
+                {
+                    string backgroundImagePath = await SaveImage(model.BackgroundImage);
+                    game.BackgroundImageUrl = backgroundImagePath;
+                }
+
+                if (model.BannerImage != null)
+                {
+                    string bannerImagePath = await SaveImage(model.BannerImage);
+                    game.BannerImageUrl = bannerImagePath;
+                }
+
+                if (model.CardImage != null)
+                {
+                    string cardImagePath = await SaveImage(model.CardImage);
+                    game.CardImageUrl = cardImagePath;
+                }
+
+                if (model.GalleryImages != null && model.GalleryImages.Any(f => f != null))
+                {
+
+                    game.GalleryImages.Clear();
+                    foreach (var image in model.GalleryImages)
+                    {
+                        if (image != null)
+                        {
+                            string galleryImagePath = await SaveImage(image);
+                            game.GalleryImages.Add(galleryImagePath);
+                        }
+                    }
+                }
+
+                _context.Characters.RemoveRange(game.Characters);
+                game.Characters.Clear();
+
+                if (model.Characters != null && model.Characters.Any())
+                {
+                    foreach (var charModel in model.Characters)
+                    {
+                        var character = new Character
+                        {
+                            Name = charModel.Name,
+                            Description = charModel.Description
+                        };
+
+                        if (charModel.Photo != null)
+                        {
+                            string photoPath = await SaveImage(charModel.Photo);
+                            character.PhotoUrl = photoPath;
+                        }
+
+                        game.Characters.Add(character);
+                    }
+                }
+
+                _context.Update(game);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.StyleGroups = GetStyleGroupsSelectList();
+            return View(model);
         }
 
         [HttpPost]

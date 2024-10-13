@@ -6,6 +6,8 @@ namespace Web_Menu.Models
 {
     public class GameViewModel
     {
+        public int Id { get; set; } // Added for editing
+
         [Required]
         public string Title { get; set; }
 
@@ -33,6 +35,11 @@ namespace Web_Menu.Models
 
         [Required]
         public string StyleGroup { get; set; }
+
+        [Required(ErrorMessage = "Price is required.")]
+        [Range(0.01, 10000.00, ErrorMessage = "Price must be between $0.01 and $1000.00.")]
+        [DataType(DataType.Currency)]
+        public decimal Price { get; set; }
     }
 
     public class CharacterViewModel
