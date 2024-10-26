@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Web_Menu.Models;
+using WebMenu.DataAccess.Configurations;
 
 namespace Web_Menu.Data
 {
@@ -11,9 +12,7 @@ namespace Web_Menu.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Game>()
-                .Property(g => g.Price)
-                .HasColumnType("decimal(18,2)"); 
+            modelBuilder.ApplyConfiguration(new GameConfiguration());
         }
         public DbSet<Game> Games { get; set; }
         public DbSet<Character> Characters { get; set; }

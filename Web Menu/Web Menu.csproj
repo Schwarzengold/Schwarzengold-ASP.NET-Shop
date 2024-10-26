@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebMenu.DataAccess\WebMenu.DataAccess.csproj" />
+    <ProjectReference Include="..\WebMenu.BusinessLogic\WebMenu.BusinessLogic.csproj" />
   </ItemGroup>
 
 </Project>

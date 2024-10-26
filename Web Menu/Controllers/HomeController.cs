@@ -1,42 +1,43 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
-using Web_Menu.Data;
+using WebMenu.BusinessLogic.Services;
 using Web_Menu.Models;
+using System.Diagnostics;
+using FluentValidation;
+using FluentValidation.Results;
+using WebMenu.BusinessLogic.Validators;
+using WebMenu.BusinessLogic.Interfaces;
 
-namespace Web_Menu.Controllers
+namespace WebMenu.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _context;
+        private readonly IGameService _gameService;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
+        public HomeController(ILogger<HomeController> logger, IGameService gameService, IWebHostEnvironment hostEnvironment)
         {
             _logger = logger;
-            _context = context;
+            _gameService = gameService;
             _hostEnvironment = hostEnvironment;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var games = _context.Games.Include(g => g.Characters).ToList();
+            var games = await _gameService.GetAllGamesAsync();
             return View(games);
         }
 
-
-        public IActionResult GameDetails(int id)
+        public async Task<IActionResult> GameDetails(int id)
         {
-            var game = _context.Games.Include(g => g.Characters).FirstOrDefault(g => g.Id == id);
+            var game = await _gameService.GetGameByIdAsync(id);
             if (game == null)
             {
                 return NotFound();
             }
             return View(game);
         }
-
 
         [HttpGet]
         public IActionResult Create()
@@ -51,78 +52,79 @@ namespace Web_Menu.Controllers
         {
             if (ModelState.IsValid)
             {
-                var game = new Game
-                {
-                    Title = model.Title,
-                    Quote = model.Quote,
-                    TrailerUrl = model.TrailerUrl,
-                    Overview = model.Overview,
-                    Gameplay = model.Gameplay,
-                    StyleGroup = model.StyleGroup,
-                    Price = model.Price,
-                    GalleryImages = new List<string>(),
-                    Characters = new List<Character>()
-                };
+                var game = await MapViewModelToGameAsync(model);
 
-                if (model.BackgroundImage != null)
+                try
                 {
-                    string backgroundImagePath = await SaveImage(model.BackgroundImage);
-                    game.BackgroundImageUrl = backgroundImagePath;
+                    await _gameService.CreateGameAsync(game);
+                    return RedirectToAction("Index");
                 }
-
-                if (model.BannerImage != null)
+                catch (ValidationException ex)
                 {
-                    string bannerImagePath = await SaveImage(model.BannerImage);
-                    game.BannerImageUrl = bannerImagePath;
-                }
-
-                if (model.CardImage != null)
-                {
-                    string cardImagePath = await SaveImage(model.CardImage);
-                    game.CardImageUrl = cardImagePath;
-                }
-
-                if (model.GalleryImages != null && model.GalleryImages.Any())
-                {
-                    foreach (var image in model.GalleryImages)
+                    foreach (var error in ex.Errors)
                     {
-                        if (image != null)
-                        {
-                            string galleryImagePath = await SaveImage(image);
-                            game.GalleryImages.Add(galleryImagePath);
-                        }
+                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
                     }
                 }
-
-                if (model.Characters != null && model.Characters.Any())
-                {
-                    foreach (var charModel in model.Characters)
-                    {
-                        var character = new Character
-                        {
-                            Name = charModel.Name,
-                            Description = charModel.Description
-                        };
-
-                        if (charModel.Photo != null)
-                        {
-                            string photoPath = await SaveImage(charModel.Photo);
-                            character.PhotoUrl = photoPath;
-                        }
-
-                        game.Characters.Add(character);
-                    }
-                }
-
-                _context.Games.Add(game);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
             }
 
             ViewBag.StyleGroups = GetStyleGroupsSelectList();
             return View(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var game = await _gameService.GetGameByIdAsync(id);
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            var model = MapGameToViewModel(game);
+
+            ViewBag.StyleGroups = GetStyleGroupsSelectList();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, GameViewModel model)
+        {
+            if (id != model.Id)
+            {
+                return BadRequest();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var game = await MapViewModelToGameAsync(model);
+
+                try
+                {
+                    await _gameService.UpdateGameAsync(game);
+                    return RedirectToAction("Index");
+                }
+                catch (ValidationException ex)
+                {
+                    foreach (var error in ex.Errors)
+                    {
+                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    }
+                }
+            }
+
+            ViewBag.StyleGroups = GetStyleGroupsSelectList();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _gameService.DeleteGameAsync(id);
+            return RedirectToAction("Index");
+        }
 
         private SelectList GetStyleGroupsSelectList()
         {
@@ -135,6 +137,98 @@ namespace Web_Menu.Controllers
                 new SelectListItem { Value = "skyrim-page", Text = "Blue" }
             };
             return new SelectList(styleGroups, "Value", "Text");
+        }
+
+        private async Task<Game> MapViewModelToGameAsync(GameViewModel model)
+        {
+            var game = new Game
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Quote = model.Quote,
+                TrailerUrl = model.TrailerUrl,
+                Overview = model.Overview,
+                Gameplay = model.Gameplay,
+                StyleGroup = model.StyleGroup,
+                Price = model.Price,
+                GalleryImages = new List<string>(),
+                Characters = new List<Character>()
+            };
+
+            if (model.BackgroundImage != null)
+            {
+                string backgroundImagePath = await SaveImage(model.BackgroundImage);
+                game.BackgroundImageUrl = backgroundImagePath;
+            }
+
+            if (model.BannerImage != null)
+            {
+                string bannerImagePath = await SaveImage(model.BannerImage);
+                game.BannerImageUrl = bannerImagePath;
+            }
+
+            if (model.CardImage != null)
+            {
+                string cardImagePath = await SaveImage(model.CardImage);
+                game.CardImageUrl = cardImagePath;
+            }
+
+            if (model.GalleryImages != null && model.GalleryImages.Any())
+            {
+                foreach (var image in model.GalleryImages)
+                {
+                    if (image != null)
+                    {
+                        string galleryImagePath = await SaveImage(image);
+                        game.GalleryImages.Add(galleryImagePath);
+                    }
+                }
+            }
+
+            if (model.Characters != null && model.Characters.Any())
+            {
+                foreach (var charModel in model.Characters)
+                {
+                    var character = new Character
+                    {
+                        Name = charModel.Name,
+                        Description = charModel.Description
+                    };
+
+                    if (charModel.Photo != null)
+                    {
+                        string photoPath = await SaveImage(charModel.Photo);
+                        character.PhotoUrl = photoPath;
+                    }
+
+                    game.Characters.Add(character);
+                }
+            }
+
+            return game;
+        }
+
+        private GameViewModel MapGameToViewModel(Game game)
+        {
+            var model = new GameViewModel
+            {
+                Id = game.Id,
+                Title = game.Title,
+                Quote = game.Quote,
+                TrailerUrl = game.TrailerUrl,
+                Overview = game.Overview,
+                Gameplay = game.Gameplay,
+                StyleGroup = game.StyleGroup,
+                Price = game.Price,
+                NumberOfCharacters = game.Characters.Count,
+                Characters = game.Characters.Select(c => new CharacterViewModel
+                {
+                    Name = c.Name,
+                    Description = c.Description
+                }).ToList()
+            };
+
+            return model;
         }
 
         private async Task<string> SaveImage(IFormFile imageFile)
@@ -167,7 +261,6 @@ namespace Web_Menu.Controllers
             string wwwRootPath = _hostEnvironment.WebRootPath;
             string path = Path.Combine(wwwRootPath, "images", fileName);
 
-
             if (!System.IO.File.Exists(path))
             {
                 using (var fileStream = new FileStream(path, FileMode.Create))
@@ -177,152 +270,6 @@ namespace Web_Menu.Controllers
             }
 
             return "/images/" + fileName;
-        }
-
-
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            var game = _context.Games.Include(g => g.Characters).FirstOrDefault(g => g.Id == id);
-            if (game == null)
-            {
-                return NotFound();
-            }
-
-            var model = new GameViewModel
-            {
-                Id = game.Id,
-                Title = game.Title,
-                Quote = game.Quote,
-                TrailerUrl = game.TrailerUrl,
-                Overview = game.Overview,
-                Gameplay = game.Gameplay,
-                StyleGroup = game.StyleGroup,
-                Price = game.Price,
-                NumberOfCharacters = game.Characters.Count,
-                Characters = game.Characters.Select(c => new CharacterViewModel
-                {
-                    Name = c.Name,
-                    Description = c.Description
-                }).ToList()
-            };
-
-            ViewBag.StyleGroups = GetStyleGroupsSelectList();
-
-            return View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, GameViewModel model)
-        {
-            if (id != model.Id)
-            {
-                return BadRequest();
-            }
-
-            if (ModelState.IsValid)
-            {
-                var game = _context.Games.Include(g => g.Characters).FirstOrDefault(g => g.Id == id);
-                if (game == null)
-                {
-                    return NotFound();
-                }
-
-                game.Title = model.Title;
-                game.Quote = model.Quote;
-                game.TrailerUrl = model.TrailerUrl;
-                game.Overview = model.Overview;
-                game.Gameplay = model.Gameplay;
-                game.StyleGroup = model.StyleGroup;
-                game.Price = model.Price;
-
-                if (model.BackgroundImage != null)
-                {
-                    string backgroundImagePath = await SaveImage(model.BackgroundImage);
-                    game.BackgroundImageUrl = backgroundImagePath;
-                }
-
-                if (model.BannerImage != null)
-                {
-                    string bannerImagePath = await SaveImage(model.BannerImage);
-                    game.BannerImageUrl = bannerImagePath;
-                }
-
-                if (model.CardImage != null)
-                {
-                    string cardImagePath = await SaveImage(model.CardImage);
-                    game.CardImageUrl = cardImagePath;
-                }
-
-                if (model.GalleryImages != null && model.GalleryImages.Any(f => f != null))
-                {
-
-                    game.GalleryImages.Clear();
-                    foreach (var image in model.GalleryImages)
-                    {
-                        if (image != null)
-                        {
-                            string galleryImagePath = await SaveImage(image);
-                            game.GalleryImages.Add(galleryImagePath);
-                        }
-                    }
-                }
-
-                _context.Characters.RemoveRange(game.Characters);
-                game.Characters.Clear();
-
-                if (model.Characters != null && model.Characters.Any())
-                {
-                    foreach (var charModel in model.Characters)
-                    {
-                        var character = new Character
-                        {
-                            Name = charModel.Name,
-                            Description = charModel.Description
-                        };
-
-                        if (charModel.Photo != null)
-                        {
-                            string photoPath = await SaveImage(charModel.Photo);
-                            character.PhotoUrl = photoPath;
-                        }
-
-                        game.Characters.Add(character);
-                    }
-                }
-
-                _context.Update(game);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.StyleGroups = GetStyleGroupsSelectList();
-            return View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
-        {
-            var game = _context.Games.Include(g => g.Characters).FirstOrDefault(g => g.Id == id);
-            if (game == null)
-            {
-                return NotFound();
-            }
-
-
-            if (game.Characters != null && game.Characters.Any())
-            {
-                _context.Characters.RemoveRange(game.Characters);
-            }
-
-
-            _context.Games.Remove(game);
-            _context.SaveChanges();
-
-            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

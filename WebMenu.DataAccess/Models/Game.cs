@@ -18,20 +18,16 @@ namespace Web_Menu.Models
         public List<string> GalleryImages { get; set; } = new List<string>();
         public string StyleGroup { get; set; }
 
-        [Required(ErrorMessage = "Price is required.")]
-        [Range(0.01, 10000.00, ErrorMessage = "Price must be between $0.01 and $1000.00.")]
-        [DataType(DataType.Currency)]
         public decimal Price { get; set; }
     }
 
     public class Character
     {
         public int Id { get; set; }
-
+        public int GameId { get; set; }
         public string PhotoUrl { get; set; }
-
         public string Name { get; set; }
-
         public string Description { get; set; }
+        public Game Game { get; set; }
     }
 }

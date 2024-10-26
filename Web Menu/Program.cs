@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Web_Menu.Data;
+using WebMenu.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http.Features;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
-
+using WebMenu.BusinessLogic.Services;
+using WebMenu.DataAccess.Interfaces;
+using Web_Menu.Data;
+using WebMenu.BusinessLogic.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,8 +25,10 @@ builder.Services.Configure<FormOptions>(options =>
     options.MultipartBodyLengthLimit = 52428800;
 });
 
-var app = builder.Build();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IGameService, GameService>();
 
+var app = builder.Build();
 
 var supportedCultures = new[] { new CultureInfo("en-US") };
 app.UseRequestLocalization(new RequestLocalizationOptions
