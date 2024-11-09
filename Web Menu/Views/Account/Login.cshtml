@@ -1,0 +1,46 @@
+﻿@model WebMenu.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    ViewData["BodyClass"] = "index-page index-background";
+}
+
+<link rel="stylesheet" href="~/css/account.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap">
+
+<div class="hdr">
+    <h1 class="text-center mb-5">Login</h1>
+</div>
+
+<div class="container mt-5">
+    <form asp-action="Login" method="post" >
+        @Html.AntiForgeryToken()
+        <section>
+            <h2>General Information</h2>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" type="password" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="RememberMe" class="form-check-input" />
+                <label asp-for="RememberMe" class="form-check-label">Remember me</label>
+            </div>
+        </section>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn createbtn">Login</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

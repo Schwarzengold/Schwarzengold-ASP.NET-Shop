@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Purchase Confirmation";
+    ViewData["BodyClass"] = "index-page index-background";
+}
+
+<link rel="stylesheet" href="~/css/addpage.css" />
+<link rel="stylesheet" href="~/css/cart.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap">
+
+<div class="hdr">
+    <h1 class="text-center mb-5">Thank You for Your Purchase!</h1>
+</div>
+
+<div class="container mt-5 text-center">
+    <p class="fontfam" style="font-size:30px; font-weight: bold">Congratulations!</p>
+    <p class="lead fontfam" style="font-size: 25px">An email confirmation has been sent to your email address.</p>
+    <a href="@Url.Action("Index", "Home")" class="btn createbtn mt-4">Return to Home</a>
+</div>

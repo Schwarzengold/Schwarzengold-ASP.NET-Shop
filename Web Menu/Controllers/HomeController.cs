@@ -7,6 +7,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using WebMenu.BusinessLogic.Validators;
 using WebMenu.BusinessLogic.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebMenu.Controllers
 {
@@ -39,6 +40,8 @@ namespace WebMenu.Controllers
             return View(game);
         }
 
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Create()
         {
@@ -46,6 +49,7 @@ namespace WebMenu.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(GameViewModel model)
@@ -72,6 +76,7 @@ namespace WebMenu.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -87,6 +92,7 @@ namespace WebMenu.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, GameViewModel model)
@@ -118,6 +124,7 @@ namespace WebMenu.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)

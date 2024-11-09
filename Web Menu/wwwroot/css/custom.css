@@ -1,5 +1,4 @@
 
-
 body.index-page {
     color: #ffffff;
 }
@@ -17,12 +16,21 @@ body.index-page {
     transition: transform 0.2s;
 }
 
-.price-text {
+.account1 {
     font-family: 'Cinzel Decorative', sans-serif;
     font-size: 1.5rem;
     color: #ffffff;
+    font-weight: 900;
+    margin-right: 30px;
+}
+
+.price-text {
+    font-family: 'Cinzel Decorative', sans-serif;
+    font-size: 1.5rem;
+    margin-right: 20px;
     margin-top: 10px;
 }
+
 
     .button1:hover {
         color: white;
@@ -30,22 +38,45 @@ body.index-page {
     }
 
 .button5 {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background: rgb(44, 78, 141);
-    background: linear-gradient(180deg, rgb(31, 61, 116) 29%, rgb(80, 106, 146) 100%);
+    background-color: rgba(0, 0, 0, 0);
+    border: none;   
+    font-size: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 700;
     font-family: 'Cinzel Decorative', sans-serif;
     color: white;
-    font-weight: bold;
     transition: transform 0.2s;
+    text-decoration: none;
 }
 
     .button5:hover {
         color: white;
         transform: scale(1.06);
     }
+
+
+.createbtn3 {
+    font-family: "Cinzel Decorative", sans-serif;
+    font-size: 30px;
+    color: white;
+    text-shadow: 6px 7px 6px #002452, -6px -4px 4px #206fd4, 6px 7px 30px black;
+    font-weight: bold;
+    transition: transform 0.2s;
+    margin-bottom: -10px;
+    background-color: rgba(0, 0, 0, 0.219);
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+    .createbtn3:hover {
+        color: rgb(112, 186, 255);
+        transform: scale(1.06);
+    }
+
+
 
 .createbtn {
     font-family: "Cinzel Decorative", sans-serif;
@@ -813,3 +844,26 @@ body.game-background {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+
+.navbar .navbar-nav .nav-item .nav-link.custom-cart-link,
+.navbar .navbar-nav .nav-item .nav-link.custom-logout-link,
+.navbar .navbar-nav .nav-item .nav-link.custom-register-link,
+.navbar .navbar-nav .nav-item .nav-link.custom-login-link {
+    margin-right: 20px;
+    font-size: 25px;
+    color: white !important; 
+    font-weight: bold !important;
+    font-family: 'Cinzel Decorative', cursive !important;
+    opacity: 1 !important; 
+    transition:  0.3s !important; 
+}
+
+
+    .navbar .navbar-nav .nav-item .nav-link.custom-cart-link:hover,
+    .navbar .navbar-nav .nav-item .nav-link.custom-logout-link:hover,
+    .navbar .navbar-nav .nav-item .nav-link.custom-register-link:hover,
+    .navbar .navbar-nav .nav-item .nav-link.custom-login-link:hover {
+        transform: scale(1.09);
+        text-decoration: none !important;
+    }

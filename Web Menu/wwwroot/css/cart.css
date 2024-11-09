@@ -1,0 +1,168 @@
+﻿
+
+.cart-items {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 30px;
+}
+
+.cart-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1rem;
+    position: relative; 
+}
+
+    .cart-item:last-child {
+        border-bottom: none;
+    }
+
+.fontfam {
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+.buttonremove {
+    position: absolute;
+    top: -5px;
+    right: 0px;
+    
+}
+
+.bold1 {
+    font-weight: bold;
+}
+
+
+
+.backto {
+    text-decoration: none;
+    padding-top: 20px;
+    margin-left: 23px;
+    font-family: "Cinzel Decorative", sans-serif;
+    font-size: 20px;
+    color: white;
+    text-shadow: 6px 7px 6px #002452, -6px -4px 4px #206fd4, 6px 7px 30px black;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.backto:hover {
+    color: rgb(112, 186, 255);
+    transform: scale(1.06);
+}
+
+.buttonn {
+    font-size: 22px;
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: rgba(238, 85, 85, 0.8);
+    transition: transform 0.2s;
+}
+
+    .buttonn:hover {
+        color: rgba(255, 108, 108, 0.8);
+        transform: scale(1.10);
+    }
+
+
+.cart-item-details {
+    font-family: 'Cinzel Decorative', cursive;
+    margin-left: 40px;
+}
+
+.cart-item-image img {
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px rgba(218, 235, 255, 1), 15px 15px 40px #00285c, -2px -2px 6px rgba(218, 235, 255, 1), -15px -15px 40px #00285c;
+}
+
+.cart-item-details h3 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: bold;
+    color: #fff;
+}
+
+.cart-item-details p {
+    color: #ddd;
+    font-size: 20px;
+}
+
+.cart-total h2 {
+    color: #fff;
+    font-weight: bold;
+}
+
+.price2 {
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.createbtn {
+    background-color: #00285c;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px rgba(218, 235, 255, 1), 15px 15px 40px #00285c, -2px -2px 6px rgba(218, 235, 255, 1), -15px -15px 40px #00285c;
+}
+
+.createbtn:hover {
+    background-color: #00509e;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #8b0000;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #a40000;
+}
+
+
+.checkout-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.checkout-text p {
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.checkout-games-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.checkout-games-list li {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+}
+
+.checkout-total h2 {
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.form-check-label {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.form-check-input {
+    margin-right: 0.5rem;
+}

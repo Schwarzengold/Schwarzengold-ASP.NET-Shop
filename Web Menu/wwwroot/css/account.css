@@ -1,0 +1,142 @@
+﻿body.index-page {
+    color: #ffffff;
+}
+
+    body.index-page .navbar {
+        background: rgb(218,235,255);
+        background: linear-gradient( 0deg, rgba(218, 235, 255, 1) 0%, rgba(67, 135, 231, 1) 14%, rgba(67, 109, 231, 1) 29%, rgba(54, 99, 232, 1) 38%, rgba(45, 84, 199, 1) 41%, rgba(48, 91, 215, 1) 55%, rgba(67, 109, 231, 1) 67%, rgba(67, 135, 231, 1) 83%, rgba(218, 235, 255, 1) 100% );
+        height: 80px;
+        opacity: 0.6;
+        box-shadow: 0px 4px 6px rgba(218, 235, 255, 1), 0px 15px 20px #1f67c3, 0px 30px 30px #00285c;
+    }
+
+    body.index-page .hom {
+        font-size: 33px;
+        font-family: 'Cinzel Decorative', sans-serif;
+        font-weight: bold;
+        position: absolute;
+        top: 9px;
+        left: 100px;
+        color: #ade6ff;
+        text-shadow: 3px 3px black;
+        transition: transform 0.2s;
+    }
+
+        body.index-page .hom:hover {
+            transform: scale(1.03);
+            color: #eef9fe;
+        }
+
+    body.index-page .container {
+        max-width: 1200px;
+        box-shadow: 3px 5px rgba(0, 0, 0.7, 0.7);
+        background: rgb(255,255,255, 0.05);
+        background-image: linear-gradient(90deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%), linear-gradient(0deg, rgba(255,255,255,0.74) 0%, rgba(0,0,0,0.4374124649859944) 1%, rgba(0,0,0,0.51) 4%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 89%, rgba(0,0,0,0.51) 96%, rgba(0,0,0,0.44) 99%, rgba(255,255,255,0.74) 100%);
+        background-blend-mode: screen;
+        padding: 50px 150px 20px;
+        border-radius: 15px;
+        box-shadow: 4px 4px 12px rgba(218, 235, 255, 1), 30px 30px 80px #00285c, -4px -4px 12px rgba(218, 235, 255, 1), -30px -30px 80px #00285c;
+        margin-bottom: 30px;
+    }
+
+    body.index-page .hdr h1 {
+        position: relative;
+        margin-top: 20px;
+        font-family: "Cinzel Decorative", sans-serif;
+        font-size: 70px;
+        color: white;
+        text-shadow: 6px 7px 6px #002452, -6px -4px 4px #206fd4, 6px 7px 30px black;
+        font-weight: bold;
+    }
+
+body.index-background {
+    background-image: url('../images/index-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+section {
+    box-shadow: 4px 4px 12px rgba(218, 235, 255, 0.3), -4px -4px 12px rgba(218, 235, 255, 0.3);
+    margin-top: 30px;
+    padding: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 2px solid;
+    border-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+
+.container .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.container label {
+    font-family: "Cinzel Decorative", sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ade6ff;
+    margin-bottom: 3px;
+}
+
+.container input[type="url"],
+.container input[type="text"],
+.container input[type="number"],
+.container input[type="file"],
+.container input[type="email"],  
+.container input[type="password"], 
+.container select,
+.container textarea {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(218, 235, 255, 0.37);
+    padding: 0.5rem;
+    box-shadow: 2px 2px 6px rgba(218, 235, 255, 1), 
+                15px 15px 40px #00285c, 
+                -2px -2px 6px rgba(218, 235, 255, 1), 
+                -15px -15px 40px #00285c;
+}
+
+.container input[type="file"] {
+    width: 100%;
+}
+
+.container input::placeholder,
+.container textarea::placeholder {
+    color: #cccccc;
+}
+
+.container input:focus,
+.container textarea:focus,
+.container select:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    box-shadow: 4px 4px 12px rgba(218, 235, 255, 1), 30px 30px 80px #00285c, -4px -4px 12px rgba(218, 235, 255, 1), -30px -30px 80px #00285c;
+}
+
+
+
+
+.custom-select option {
+    color: black;
+    font-weight: 500;
+}
+
+.createbtn {
+    font-family: "Cinzel Decorative", sans-serif;
+    font-size: 35px;
+    color: white;
+    text-shadow: 6px 7px 6px #002452, -6px -4px 4px #206fd4, 6px 7px 30px black;
+    font-weight: bold;
+    transition: transform 0.2s;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.219);
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+    .createbtn:hover {
+        color: rgb(112, 186, 255);
+        transform: scale(1.06);
+    }
