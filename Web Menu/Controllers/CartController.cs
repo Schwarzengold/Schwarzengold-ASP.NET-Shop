@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebMenu.BusinessLogic.Interfaces;
 using Web_Menu.Models;
 using WebMenu.ViewModels;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace Web_Menu.Controllers
 {
@@ -12,11 +12,13 @@ namespace Web_Menu.Controllers
     {
         private readonly ICartService _cartService;
         private readonly IGameService _gameService;
+        private readonly IEmailSender _emailSender;
 
-        public CartController(ICartService cartService, IGameService gameService)
+        public CartController(ICartService cartService, IGameService gameService, IEmailSender emailSender)
         {
             _cartService = cartService;
             _gameService = gameService;
+            _emailSender = emailSender;
         }
 
         private string GetCartId()
@@ -74,18 +76,8 @@ namespace Web_Menu.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CheckoutConfirmed(CheckoutViewModel model)
         {
-            Console.WriteLine($"Field: dsasdadasdsadsadadsdasad");
             if (!ModelState.IsValid)
             {
-                Console.WriteLine("ModelState is invalid. Errors:");
-                foreach (var state in ModelState)
-                {
-                    foreach (var error in state.Value.Errors)
-                    {
-                        Console.WriteLine($"Field: {state.Key}, Error: {error.ErrorMessage}");
-                    }
-                }
-
                 model.CartItems = _cartService.GetCartItems(GetCartId());
                 model.TotalAmount = model.CartItems.Sum(i => i.Game.Price * i.Quantity);
                 
@@ -97,9 +89,11 @@ namespace Web_Menu.Controllers
                 return RedirectToAction("Index");
             }
 
-            SendConfirmationEmail(User.Identity.Name, cartItems);
 
             _cartService.ClearCart(GetCartId());
+
+            var userEmail = User.Identity.Name;
+            SendPurchaseConfirmationEmail(userEmail, cartItems);
 
             return RedirectToAction("PurchaseConfirmation");
         }
@@ -109,9 +103,44 @@ namespace Web_Menu.Controllers
             return View();
         }
 
-        private void SendConfirmationEmail(string userEmail, List<CartItem> cartItems)
+        private void SendPurchaseConfirmationEmail(string userEmail, List<CartItem> cartItems)
         {
-            Console.WriteLine($"Email sent to {userEmail} with purchase details.");
+            var gamesHtml = string.Join("", cartItems.Select(item => $@"
+        <div style='display: flex; align-items: center; margin-bottom: 15px;'>
+            <div>
+                <p style='margin: 0; font-size: 16px; font-weight: bold;'>{item.Game.Title}</p>
+                <p style='margin: 0; font-size: 14px; color: #555;'>Price: ${item.Game.Price}</p>
+            </div>
+        </div>"));
+
+            var totalAmount = cartItems.Sum(item => item.Game.Price * item.Quantity);
+
+            var subject = "Purchase Confirmation - Game Store";
+            var message = $@"
+        <div style='font-family: Arial, sans-serif; line-height: 1.6; color: #333; padding: 20px;'>
+            <h2 style='color: #00285c;'>Thank you for your purchase!</h2>
+            <p>You have successfully purchased the following games:</p>
+            <div style='border: 1px solid #ddd; padding: 10px; border-radius: 5px;'>
+                {gamesHtml}
+            </div>
+            <h3 style='color: #00509e; margin-top: 20px;'>Total Amount: <span style='color: #222;'>${totalAmount}</span></h3>
+            <p>The games will now appear in your library. You can access them anytime by logging into your account.</p>
+            <hr style='margin: 20px 0; border: 0; border-top: 1px solid #eee;' />
+            <p style='font-size: 12px; color: #777;'>If you have any questions or issues, feel free to contact our support team.</p>
+            <p style='font-size: 12px; color: #777;'>Thank you for shopping with us!</p>
+        </div>";
+
+            try
+            {
+                _emailSender.SendEmailAsync(userEmail, subject, message).Wait();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to send email: {ex.Message}");
+            }
         }
+
+
+
     }
 }

@@ -2,15 +2,37 @@
     color: #ffffff;
 }
 
-    body.index-page .navbar {
-        background: rgb(218,235,255);
-        background: linear-gradient( 0deg, rgba(218, 235, 255, 1) 0%, rgba(67, 135, 231, 1) 14%, rgba(67, 109, 231, 1) 29%, rgba(54, 99, 232, 1) 38%, rgba(45, 84, 199, 1) 41%, rgba(48, 91, 215, 1) 55%, rgba(67, 109, 231, 1) 67%, rgba(67, 135, 231, 1) 83%, rgba(218, 235, 255, 1) 100% );
-        height: 80px;
-        opacity: 0.6;
-        box-shadow: 0px 4px 6px rgba(218, 235, 255, 1), 0px 15px 20px #1f67c3, 0px 30px 30px #00285c;
-    }
+.field-validation-error {
+    font-size: 14px;
+    font-weight: 900;
+    font-family: 'Cinzel Decorative', cursive;
+    color: #e6473c !important;
+}
 
-    body.index-page .hom {
+body.index-page .navbar {
+    background: rgb(218,235,255);
+    background: linear-gradient( 0deg, rgba(218, 235, 255, 1) 0%, rgba(67, 135, 231, 1) 14%, rgba(67, 109, 231, 1) 29%, rgba(54, 99, 232, 1) 38%, rgba(45, 84, 199, 1) 41%, rgba(48, 91, 215, 1) 55%, rgba(67, 109, 231, 1) 67%, rgba(67, 135, 231, 1) 83%, rgba(218, 235, 255, 1) 100% );
+    height: 80px;
+    opacity: 0.6;
+    box-shadow: 0px 4px 6px rgba(218, 235, 255, 1), 0px 15px 20px #1f67c3, 0px 30px 30px #00285c;
+}
+
+.alert-info {
+    background: rgb(218,235,255, 0.6);
+    background: linear-gradient( 0deg, rgba(218, 235, 255, 0.6) 0%, rgba(67, 135, 231, 0.6) 14%, rgba(67, 109, 231, 0.6) 29%, rgba(54, 99, 232, 0.6) 38%, rgba(45, 84, 199, 0.6) 41%, rgba(48, 91, 215, 0.6) 55%, rgba(67, 109, 231, 0.6) 67%, rgba(67, 135, 231, 0.6) 83%, rgba(218, 235, 255, 0.6) 100% );
+    box-shadow: 0px 4px 6px rgba(218, 235, 255, 0.6), 0px 15px 20px rgba(31, 103, 195, 0.6), 0px 30px 30px rgba(0, 40, 92, 0.6);
+    border-radius: 5px;
+    border-color: rgb(182, 239, 251, 0.2);
+}
+
+.alert-info span {
+    color: white;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.3rem;
+    opacity: 1;
+}
+
+    body .index-page .hom {
         font-size: 33px;
         font-family: 'Cinzel Decorative', sans-serif;
         font-weight: bold;

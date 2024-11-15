@@ -1,0 +1,15 @@
+﻿<div class="cart-item d-flex mb-4 align-items-center">
+    <div class="cart-item-image">
+        <img src="@Model.Game.CardImageUrl" alt="@Model.Game.Title" class="img-fluid" />
+    </div>
+    <div class="cart-item-details flex-grow-1 ml-4">
+        <h3>@Model.Game.Title</h3>
+        <p>Price: <span class="price2">$@Model.Game.Price</span></p>
+        <p>Quantity: @Model.Quantity</p>
+        <p>Subtotal: $@(Model.Game.Price * Model.Quantity)</p>
+    </div>
+    <form asp-action="RemoveFromCart" method="post" class="buttonremove">
+        <input type="hidden" name="id" value="@Model.GameId" />
+        <button type="submit" class="buttonn">Remove</button>
+    </form>
+</div>

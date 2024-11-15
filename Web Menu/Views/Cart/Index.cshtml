@@ -25,28 +25,11 @@ else
         <div class="cart-items">
             @foreach (var item in Model)
             {
-                <div class="cart-item d-flex mb-4 align-items-center">
-                    <div class="cart-item-image">
-                        <img src="@item.Game.CardImageUrl" alt="@item.Game.Title" class="img-fluid" />
-                    </div>
-                    <div class="cart-item-details flex-grow-1 ml-4">
-                        <h3>@item.Game.Title</h3>
-                        <p>Price: <span class="price2">$@item.Game.Price</span></p>
-                        <p>Quantity: @item.Quantity</p>
-                        <p>Subtotal: $@(item.Game.Price * item.Quantity)</p>
-                    </div>
-
-                    <form asp-action="RemoveFromCart" method="post" class="buttonremove">
-                        <input type="hidden" name="id" value="@item.GameId" />
-                        <button type="submit" class="buttonn">Remove</button>
-                    </form>
-                </div>
+                @Html.Partial("_CartItem", item)
             }
-
             <div class="cart-total text-right mt-5 fontfam">
                 <h2>Total: $@Model.Sum(i => i.Game.Price * i.Quantity)</h2>
             </div>
-
             <div class="text-center mt-4 d-flex justify-content-between">
                 <a href="@Url.Action("Index", "Home")" class="backto">Back to Games</a>
                 <a href="@Url.Action("Checkout", "Cart")" class="btn createbtn">Proceed to Checkout</a>

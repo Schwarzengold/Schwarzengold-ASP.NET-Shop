@@ -13,7 +13,16 @@
 </div>
 
 <div class="container mt-5">
-    <form asp-action="Login" method="post" >
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-info text-center" role="alert">
+            <span class="textik">
+                @ViewData["ErrorMessage"]
+            </span>
+        </div>
+    }
+
+    <form asp-action="Login" method="post">
         @Html.AntiForgeryToken()
         <section>
             <h2>General Information</h2>

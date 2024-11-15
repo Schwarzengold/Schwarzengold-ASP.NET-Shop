@@ -1,0 +1,28 @@
+﻿
+
+@{
+    ViewData["Title"] = "Confirm Your Registration";
+    ViewData["BodyClass"] = "index-page index-background";
+}
+
+<link rel="stylesheet" href="~/css/account.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap">
+
+<div class="hdr">
+    <h1 class="text-center mb-5">Almost There!</h1>
+</div>
+
+<div class="container mt-5 text-center">
+            <h2 class="fontfam" style="font-size:30px; font-weight: bold">Please Confirm Your Email</h2>
+        <p class="lead fontfam" style="font-size: 20px">
+            We have sent a confirmation link to the email address you provided during registration.
+            Please check your email and click the link to complete your registration.
+        </p>
+            <p class="lead fontfam" style="font-size: 20px">
+            Once you confirm your email, you can <a href="@Url.Action("Login", "Account")">log in</a> to your account.
+        </p>
+            <p class="lead fontfam" style="font-size: 20px">
+            If you didn't receive the email, please check your spam folder or <a href="@Url.Action("Register", "Account")">register again</a>.
+        </p>
+
+</div>

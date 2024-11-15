@@ -5,7 +5,6 @@ using Web_Menu.Models;
 using System.Diagnostics;
 using FluentValidation;
 using FluentValidation.Results;
-using WebMenu.BusinessLogic.Validators;
 using WebMenu.BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 
@@ -39,7 +38,6 @@ namespace WebMenu.Controllers
             }
             return View(game);
         }
-
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
@@ -148,9 +146,8 @@ namespace WebMenu.Controllers
 
         private async Task<Game> MapViewModelToGameAsync(GameViewModel model)
         {
-            var game = new Game
+            var game = await _gameService.GetGameByIdAsync(model.Id) ?? new Game
             {
-                Id = model.Id,
                 Title = model.Title,
                 Quote = model.Quote,
                 TrailerUrl = model.TrailerUrl,
@@ -161,6 +158,14 @@ namespace WebMenu.Controllers
                 GalleryImages = new List<string>(),
                 Characters = new List<Character>()
             };
+
+            game.Title = model.Title;
+            game.Quote = model.Quote;
+            game.TrailerUrl = model.TrailerUrl;
+            game.Overview = model.Overview;
+            game.Gameplay = model.Gameplay;
+            game.StyleGroup = model.StyleGroup;
+            game.Price = model.Price;
 
             if (model.BackgroundImage != null)
             {
@@ -182,6 +187,7 @@ namespace WebMenu.Controllers
 
             if (model.GalleryImages != null && model.GalleryImages.Any())
             {
+                game.GalleryImages.Clear();
                 foreach (var image in model.GalleryImages)
                 {
                     if (image != null)
@@ -194,22 +200,51 @@ namespace WebMenu.Controllers
 
             if (model.Characters != null && model.Characters.Any())
             {
+                var existingCharacters = game.Characters.ToList();
+
                 foreach (var charModel in model.Characters)
                 {
-                    var character = new Character
+                    var existingCharacter = existingCharacters.FirstOrDefault(c => c.Id == charModel.Id);
+                    if (existingCharacter != null)
                     {
-                        Name = charModel.Name,
-                        Description = charModel.Description
-                    };
+                        existingCharacter.Name = charModel.Name;
+                        existingCharacter.Description = charModel.Description;
 
-                    if (charModel.Photo != null)
-                    {
-                        string photoPath = await SaveImage(charModel.Photo);
-                        character.PhotoUrl = photoPath;
+                        if (charModel.Photo != null)
+                        {
+                            string photoPath = await SaveImage(charModel.Photo);
+                            existingCharacter.PhotoUrl = photoPath;
+                        }
                     }
+                    else
+                    {
+                        var newCharacter = new Character
+                        {
+                            Name = charModel.Name,
+                            Description = charModel.Description
+                        };
 
-                    game.Characters.Add(character);
+                        if (charModel.Photo != null)
+                        {
+                            string photoPath = await SaveImage(charModel.Photo);
+                            newCharacter.PhotoUrl = photoPath;
+                        }
+
+                        game.Characters.Add(newCharacter);
+                    }
                 }
+
+                var characterIdsFromModel = model.Characters.Select(c => c.Id).ToList();
+                var charactersToRemove = existingCharacters.Where(c => !characterIdsFromModel.Contains(c.Id)).ToList();
+
+                foreach (var characterToRemove in charactersToRemove)
+                {
+                    game.Characters.Remove(characterToRemove);
+                }
+            }
+            else
+            {
+                game.Characters.Clear();
             }
 
             return game;
@@ -230,6 +265,7 @@ namespace WebMenu.Controllers
                 NumberOfCharacters = game.Characters.Count,
                 Characters = game.Characters.Select(c => new CharacterViewModel
                 {
+                    Id = c.Id,
                     Name = c.Name,
                     Description = c.Description
                 }).ToList()

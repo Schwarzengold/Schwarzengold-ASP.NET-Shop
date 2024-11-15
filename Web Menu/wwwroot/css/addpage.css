@@ -10,6 +10,13 @@ body.index-page .navbar {
     box-shadow: 0px 4px 6px rgba(218, 235, 255, 1), 0px 15px 20px #1f67c3, 0px 30px 30px #00285c;
 }
 
+.field-validation-error {
+    font-size: 14px;
+    font-weight: 900;
+    font-family: 'Cinzel Decorative', cursive;
+    color: #e6473c !important;
+}
+
 body.index-page .hom {
     font-size: 33px;
     font-family: 'Cinzel Decorative', sans-serif;

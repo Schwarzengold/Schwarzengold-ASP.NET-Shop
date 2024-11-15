@@ -30,6 +30,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 }).AddEntityFrameworkStores<ApplicationDbContext>()
   .AddDefaultTokenProviders();
 
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IGameService, GameService>();

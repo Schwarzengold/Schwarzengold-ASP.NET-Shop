@@ -23,24 +23,6 @@ namespace WebMenu.DataAccess.Seed
                     roleResult = await roleManager.CreateAsync(new IdentityRole(roleName));
                 }
             }
-
-            var adminEmail = "adminexample.com";
-            var adminUser = await userManager.FindByNameAsync("admin");
-
-            if (adminUser == null)
-            {
-                var user = new ApplicationUser
-                {
-                    UserName = "admin",
-                    Email = adminEmail,
-                    EmailConfirmed = true
-                };
-                var createAdminUser = await userManager.CreateAsync(user, "admin");
-                if (createAdminUser.Succeeded)
-                {
-                    await userManager.AddToRoleAsync(user, "Admin");
-                }
-            }
         }
     }
 }

@@ -3,6 +3,13 @@ body.index-page {
     color: #ffffff;
 }
 
+.field-validation-error {
+    font-size: 14px;
+    font-weight: 900;
+    font-family: 'Cinzel Decorative', cursive;
+    color: #e6473c !important;
+}
+
 .button1 {
     background: rgb(95, 38, 38);
     background: linear-gradient(180deg, rgb(105, 43, 43) 41%, rgb(182, 112, 112) 100%);

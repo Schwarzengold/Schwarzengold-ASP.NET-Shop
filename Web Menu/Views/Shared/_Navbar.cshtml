@@ -1,0 +1,32 @@
+﻿<nav class="navbar navbar-expand-sm navbar-dark bg-dark font-weight-bold">
+    <div class="navbar-collapse collapse d-flex justify-content-end">
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav">
+            @if (User.Identity.IsAuthenticated)
+            {
+                @if (User.IsInRole("Buyer"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link custom-cart-link" href="@Url.Action("Index", "Cart")">Cart</a>
+                    </li>
+                }
+                <li class="nav-item">
+                    <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                        @Html.AntiForgeryToken()
+                        <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link custom-logout-link">Logout</a>
+                    </form>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link custom-register-link" href="@Url.Action("Register", "Account")">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-login-link" href="@Url.Action("Login", "Account")">Login</a>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>
+<a class="navbar-brand hom" href="@Url.Action("Index", "Home")">Games Page</a>
